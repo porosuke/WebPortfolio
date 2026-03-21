@@ -1,0 +1,70 @@
+:root {
+    --section-header-height: 64px;
+}
+
+.section-header {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    height: var(--section-header-height);
+    filter: drop-shadow(var(--space1) var(--space1) 2px var(--main75-color));
+    --offset: calc(var(--section-header-height) * tan(var(--angle)));
+}
+
+/* 太い部分 */
+.section-header-content {
+    display: flex;
+    align-items: center;
+
+    clip-path: --skew(var(--offset), 1, 1);
+}
+
+/* 細い部分 */
+.section-header-tail {
+    height: 50%;
+
+    --tail-offset: calc(var(--offset) / 2);
+    clip-path: --skew(var(--tail-offset), 1, 1);
+
+    margin-left: calc(-1 * var(--tail-offset) - 1px);
+    z-index: -1;
+}
+
+.section-header-content,
+.section-header-tail {
+    background: linear-gradient(
+        to bottom,
+        color-mix(in srgb, var(--main-color) 90%, var(--light-color)) 0px,
+        var(--main-color) var(--section-header-height)
+    );
+}
+
+.section-header-icon {
+    margin-left: var(--space4);
+    height: 60%;
+    aspect-ratio: 1 / 1;
+    flex-shrink: 0;
+}
+
+.section-header-title {
+    color: var(--light-color);
+    margin-right: var(--space4);
+    font-family: "Racing Sans One";
+    font-size: var(--space6);
+}
+
+/* 間の線 */
+.section-header-divider {
+    width: 2px;
+    height: 80%;
+    margin: 0 var(--space2);
+
+    background-color: var(--light-color);
+    transform: rotate(var(--angle));
+}
+
+/* Tablet */
+@media (max-width: 768px) {
+    .section-header-title {
+        font-size: var(--space5);
+    }
+}

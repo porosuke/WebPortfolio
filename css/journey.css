@@ -1,0 +1,19 @@
+:root {
+    --divider-width: 20px;
+    --data-height: 64px;
+    --data-padding-vert: 8px;
+    --data-padding-hori: 16px;
+    --date-node-width: 50px;
+}
+
+.journey-content { 
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+
+@media (max-width: 768px) {
+    :root {
+        --divider-width: 10px;
+    }
+}

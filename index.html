@@ -1,0 +1,325 @@
+<html lang="ja">
+    <head>
+        <meta charset="utf-8" />
+        <title>Poro's Portfolio</title>
+        <link rel="icon" href="images/favicon.ico">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Black+Ops+One&family=Cormorant:ital,wght@0,300..700;1,300..700&family=Noto+Sans+JP:wght@100..900&family=Racing+Sans+One&display=swap" rel="stylesheet">
+        <!-- js 読み込み -->
+        <script type="module" src="js/dataManager.js" defer></script>
+        <script type="module" src="js/main.js" defer></script>
+        <script type="module" src="js/profile.js" defer></script>
+        <script type="module" src="js/skills.js" defer></script>
+        <script type="module" src="js/modal.js" defer></script>
+        <script type="module" src="js/projects.js" defer></script>
+        <script type="module" src="js/journey.js" defer></script>
+        <script type="module" src="js/journeyTab.js" defer></script>
+        <script type="module" src="js/journeySection.js" defer></script>
+        <!-- css 読み込み -->
+        <link rel="stylesheet" href="css/base.css" />
+        <link rel="stylesheet" href="css/icon.css" />
+        <link rel="stylesheet" href="css/fixedHeader.css" />
+        <link rel="stylesheet" href="css/sectionHeader.css" />
+        <link rel="stylesheet" href="css/profile.css" />
+        <link rel="stylesheet" href="css/skills.css" />
+        <link rel="stylesheet" href="css/modal.css" />
+        <link rel="stylesheet" href="css/modalGallery.css">
+        <link rel="stylesheet" href="css/modalDescription.css">
+        <link rel="stylesheet" href="css/projects.css" />
+        <link rel="stylesheet" href="css/journey.css" />
+        <link rel="stylesheet" href="css/journeyTab.css" />
+        <link rel="stylesheet" href="css/journeySection.css" />
+    </head>
+
+    <body id="top">
+        <main>
+            <!-- 固定ヘッダー -->
+            <header class="fixed-header">
+                <div class="inner-header">
+                    <!-- 固定ヘッダー左 -->
+                    <div class="fixed-header-left">
+                        <a class="nav-item" href="#top">
+                            <span class="hover-bg"></span>
+                            <div class="item-content">
+                                <div class="icon top"></div>
+                                <div class="label">Top</div>
+                            </div>
+                        </a>
+                    </div>
+
+                    <!-- 固定ヘッダー右 -->
+                    <nav class="fixed-header-right">
+                        <a class="nav-item" href="#profile">
+                            <span class="hover-bg"></span>
+                            <div class="item-content">
+                                <div class="icon profile"></div>
+                                <div class="label">Profile</div>
+                            </div>
+                        </a>
+                        <a class="nav-item" href="#skills">
+                            <span class="hover-bg"></span>
+                            <div class="item-content">
+                                <div class="icon skills"></div>
+                                <div class="label">Skills</div>
+                            </div>
+                        </a>
+                        <a class="nav-item" href="#projects">
+                            <span class="hover-bg"></span>
+                            <div class="item-content">
+                                <div class="icon projects"></div>
+                                <div class="label">Projects</div>
+                            </div>
+                        </a>
+                        <a class="nav-item" href="#journey">
+                            <span class="hover-bg"></span>
+                            <div class="item-content">
+                                <div class="icon journey"></div>
+                                <div class="label">My Journey</div>
+                            </div>
+                        </a>
+                        <a class="nav-item theme-toggle">
+                            <span class="hover-bg"></span>
+                            <div class="item-content">
+                                <div class="icon mode"></div>
+                                <div class="label">--</div>
+                            </div>
+                        </a>
+                    </nav>
+                </div>
+            </header>
+
+            <div class="inner-content">
+                <!-- プロフィール -->
+                <section id="profile">
+                    <div class="section-header">
+                        <div class="section-header-content">
+                            <div class="section-header-icon">
+                                <div class="icon profile"></div>
+                            </div>
+                            <div class="section-header-divider"></div>
+                            <div class="section-header-title">Profile</div>
+                        </div>
+                        <div class="section-header-tail"></div>
+                    </div>
+                    <p></p>
+                    <div class="profile-content">
+                        <div class="profile-image">
+                            <img src="images/profile/profile.webp" alt="Porosuke profile image">
+                        </div>
+                        <div class="profile-name">Porosuke</div>
+                        <div class="profile-univ">
+                            東京電機大学<br>システムデザイン工学部<br>情報システム工学科
+                        </div>
+                        <div class="profile-intro">
+                            Porosukeのポートフォリオへようこそ。ここでは、これまでの制作活動や取り組みについて知ることができます。<br>
+                            ゆっくりとご覧ください。<br>
+                            また現在、潜水艦をテーマにしたゲームを個人開発しています。<br>
+                            ステルス情報戦と連携行動を主軸にしたゲームシステムを設計しています。<br>
+                            ストーリーやオンライン対戦の実装にも力を入れる予定です。<br>
+                            完成をお楽しみに！<br>
+                        </div>
+                        <div class="profile-contacts">
+                            <!-- Mailへのコンタクト -->
+                            <div class="profile-contact">
+                                <a href="mailto:porosuke3070@gmail.com"
+                                    class="profile-contact-button content-button"
+                                    aria-label="Mail">
+                                    <div class="icon mail"></div>
+                                </a>
+                                <div class="profile-contact-content">
+                                    porosuke3070@gmail.com
+                                    <button class="copy-button"
+                                        type="button"
+                                        data-copy="porosuke3070@gmail.com"
+                                        aria-label="Copy mail address">
+                                        ⧉
+                                    </button>
+                                </div>
+                            </div>
+                            <!-- Githubへのコンタクト -->
+                            <div class="profile-contact">
+                                <a href="https://github.com/porosuke" 
+                                    class="profile-contact-button content-button"
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                    aria-label="GitHub">
+                                    <div class="icon github"></div>
+                                </a>
+                                <div class="profile-contact-content">
+                                    porosuke 
+                                    <a href="https://github.com/porosuke"
+                                        class="external-link"
+                                        target="_blank"
+                                        rel="noopener noreferrer">
+                                        Github
+                                    </a>
+                                </div>
+                            </div>
+                            <!-- Zennへのコンタクト -->
+                            <div class="profile-contact">
+                                <a href="https://zenn.dev/porosuke" 
+                                    class="profile-contact-button content-button"
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                    aria-label="Zenn">
+                                    <div class="icon zenn"></div>
+                                </a>
+                                <div class="profile-contact-content">
+                                    porosuke 
+                                    <a href="https://zenn.dev/porosuke"
+                                        class="external-link"
+                                        target="_blank"
+                                        rel="noopener noreferrer">
+                                        Zenn
+                                    </a>
+                                </div>
+                            </div>
+                            <!-- <div class="profile-contact">
+                                <div class="profile-contact-button"></div>
+                                <div class="profile-contact-content"></div>
+                            </div> -->
+                        </div>
+                    </div>
+                </section>
+                <br>
+                <!-- スキル -->
+                <section id="skills">
+                    <div class="section-header">
+                        <div class="section-header-content">
+                            <div class="section-header-icon">
+                                <div class="icon skills"></div>
+                            </div>
+                            <div class="section-header-divider"></div>
+                            <div class="section-header-title">Skills</div>
+                        </div>
+                        <div class="section-header-tail"></div>
+                    </div>
+
+                    <div class="skills-content">
+                        <p></p>
+                        <div class="skill-level-intro">
+                            <li>Lv.1 : 基礎文法・概念を理解している程度</li>
+                            <li>Lv.2 : 小規模な制作・演習で自主的な使用経験がある</li>
+                            <li>Lv.3 : 設計判断を含めて主体的に使用できる</li>
+                        </div>
+                        <p></p>
+                        <!-- スキルバッジ群はJSで動的生成 -->
+                        <div id="skill-containers"></div>
+                        <p></p>
+                    </div>
+                </section>
+                <br>
+                <!-- 制作物 -->
+                <section id="projects">
+                    <div class="section-header">
+                        <div class="section-header-content">
+                            <div class="section-header-icon">
+                                <div class="icon projects"></div>
+                            </div>
+                            <div class="section-header-divider"></div>
+                            <div class="section-header-title">Projects</div>
+                        </div>
+                        <div class="section-header-tail"></div>
+                    </div>
+                    <div class="projects-content">
+                        <p></p>
+                        個人的に思い入れの強い3作品をご紹介します。
+                        <p></p>
+                        <!-- プロジェクト群はJSで動的生成 -->
+                        <div id="project-container"></div>
+                        <p></p>
+                        他の作品は以下のMy Journeyにありますので、良ければご覧ください。
+                    </div>
+                </section>
+                <br>
+                <!-- 過程 -->
+                <section id="journey">
+                    <div class="section-header">
+                        <div class="section-header-content">
+                            <div class="section-header-icon">
+                                <div class="icon journey"></div>
+                            </div>
+                            <div class="section-header-divider"></div>
+                            <div class="section-header-title">My Journey</div>
+                        </div>
+                        <div class="section-header-tail"></div>
+                    </div>
+                    <div class="journey-content">
+                        <p></p>
+                        <!-- タブ -->
+                        <div class="journey-tabs">
+                            <div class="journey-tab production active">
+                                <div class="journey-title">
+                                    <span class="full">Production</span>
+                                    <span class="short">Prod</span>
+                                </div>
+                                <div class="journey-segmented-buttons"></div>
+                            </div>
+                            <div class="journey-tab event">
+                                <div class="journey-title">Event</div>
+                                <div class="journey-segmented-buttons"></div>
+                            </div>
+                        </div>
+                        <!-- コンテンツ自体 -->
+                        <div class="journey-sections">
+                            <div id="journey-production" class="journey-section production active"></div>
+                            <div class="divider">
+                                <div id="divider-section" class="divider-section"></div>
+                            </div>
+                            <div id="journey-event" class="journey-section event"></div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- モーダル描画先（空） -->
+                <div id="modal-root"></div>
+                <!-- モーダルテンプレート -->
+                <template id="modal-template">
+                    <div class="modal-overlay">
+                        <div class="modal-content">
+                            <div class="close-button-wrapper">
+                                <button class="close-button" aria-label="Close">
+                                    <div class="icon close"></div>
+                                </button>
+                            </div>
+                            <div class="modal-title">Project Title</div>
+                            <div class="modal-main">
+                                <!-- ギャラリー -->
+                                <div class="modal-gallery">
+                                    <div class="gallery-view">
+                                        <div class="gallery-navi">
+                                            <button class="gallery-button prev">&lt;</button>
+                                            <div class="gallery-indicators"></div>
+                                            <button class="gallery-button next">&gt;</button>
+                                        </div>
+                                        <div class="gallery-media">
+                                            <div class="gallery-image-wrapper"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- 説明 -->
+                                <div class="modal-description">
+                                    <div class="desc-section desc-main">
+                                        <p class="desc-text"></p>
+                                    </div>
+                                    <div class="desc-section desc-links">
+                                        <div class="links-container"></div>
+                                    </div>
+                                    <div class="desc-section desc-period">
+                                        <span class="period-text"></span>
+                                    </div>
+                                    <div class="desc-section desc-tags">
+                                        <div class="tags-container"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </template>
+
+            </div>
+        </main>
+    </body>
+</html>

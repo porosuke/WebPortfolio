@@ -1,0 +1,275 @@
+/* 定数 */
+:root {
+    --angle: 15deg;
+    --header-height: 64px;
+    --header-item-width: 128px;
+    --content-max-width: 960px;
+    --content-side-padding: 16px;
+    --accent-color: #1e7bbf;
+    --light-color: #e7e8e3;
+    --light75-color: rgba(231, 232, 227, 0.75);
+    --dark-color: #051824;
+    --dark75-color: rgba(5, 24, 36, 0.75);
+    --main-color: #4a647a;
+    --main75-color: rgba(74, 100, 122, 0.75);
+    --main50-color: rgba(74, 100, 122, 0.5);
+    --main25-color: rgba(74, 100, 122, 0.25);
+    --blue-color: #2C8CE6;
+    --green-color: #19A974;
+    --orange-color: #F07A1A;
+
+    --bg-color: var(--light-color);
+    --content-color: var(--dark-color);
+
+    --button-anim-time: 150ms;
+    --fade-anim-time: 200ms;
+    --move-anim-time: 300ms;
+
+    --large-button-expand-scale: 1.05;
+    --large-button-shrink-scale: 0.95;
+
+    --button-expand-scale: 1.15;
+    --button-shrink-scale: 0.85;
+
+    --space1: 4px;
+    --space2: 8px;
+    --space3: 16px;
+    --space4: 24px;
+    --space5: 32px;
+    --space6: 48px;
+}
+
+html {
+    scrollbar-gutter: stable;
+    scroll-behavior: smooth;
+    user-select: none;
+}
+
+html[data-theme="dark"] {
+    --bg-color: var(--dark-color);
+    --content-color: var(--light-color);
+}
+
+html[data-theme="light"] {
+    --bg-color: var(--light-color);
+    --content-color: var(--dark-color);
+}
+
+main {
+    padding-top: var(--header-height);
+}
+
+body {
+    background-color: var(--bg-color);
+    color: var(--content-color);
+    font-family: "Noto Sans JP";
+}
+/* 正投影みたいな背景 */
+body::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+
+    z-index: -1;
+    opacity: 0.1;
+
+    background-image:
+        linear-gradient(30deg, var(--main-color) 12%, transparent 12.5%, transparent 87%, var(--main-color) 87.5%, var(--main-color)),
+        linear-gradient(150deg, var(--main-color) 12%, transparent 12.5%, transparent 87%, var(--main-color) 87.5%, var(--main-color)),
+        linear-gradient(30deg, var(--main-color) 12%, transparent 12.5%, transparent 87%, var(--main-color) 87.5%, var(--main-color)),
+        linear-gradient(150deg, var(--main-color) 12%, transparent 12.5%, transparent 87%, var(--main-color) 87.5%, var(--main-color)),
+        linear-gradient(60deg, var(--main50-color) 25%, transparent 25.5%, transparent 75%, var(--main50-color) 75%, var(--main50-color)),
+        linear-gradient(60deg, var(--main50-color) 25%, transparent 25.5%, transparent 75%, var(--main50-color) 75%, var(--main50-color));
+    background-size: 40px 70px;
+    background-position: 0 0, 0 0, 20px 35px, 20px 35px, 0 0, 20px 35px;
+}
+
+section {
+    scroll-margin-top: var(--header-height);
+}
+
+.external-link {
+    color: var(--blue-color);
+    transition: color var(--fade-anim-time) ease;
+    paint-order: stroke;
+    text-decoration: none;
+}
+
+.external-link:hover {
+    color: var(--accent-color);
+}
+
+.inner-content {
+    max-width: var(--content-max-width);
+    padding-left: var(--content-side-padding);
+    padding-right: var(--content-side-padding);
+    margin: 0 auto;
+}
+
+/* コンテンツボタンのアクション（ホバーで影&拡大、クリックで縮小） */
+
+.content-button {
+    position: relative;
+    transition: transform var(--button-anim-time) ease, filter var(--fade-anim-time) ease;
+}
+
+.content-button:hover {
+    transform: scale(var(--button-expand-scale));
+    filter: drop-shadow(0 var(--space1) 1px var(--main75-color));
+}
+
+.content-button.large:hover {
+    transform: scale(var(--large-button-expand-scale));
+}
+
+.content-button:active {
+    transform: scale(var(--button-shrink-scale));
+}
+
+.content-button.large:active {
+    transform: scale(var(--large-button-shrink-scale));
+}
+
+/* 一般的なボタンのアクション（ホバーで色変化&拡大、クリックで縮小） */
+button {
+    border: 1px solid var(--content-color);
+    background-color: var(--bg-color);
+    cursor: pointer;
+    transition: transform var(--button-anim-time) ease, background-color var(--fade-anim-time) ease;
+}
+
+button:hover {
+    transform: scale(var(--button-expand-scale));
+    background: var(--accent-color);
+}
+
+button:active {
+    transform: scale(var(--button-shrink-scale));
+}
+
+/* #region 傾き制御 */
+/* offset: 傾き量（px）、left/vert/right: 左右の辺を傾ける方向*/
+@function --skew( --offset: <length> , --left-sign <number>, --right-sign <number>) {
+    result: polygon(
+        /* 左上。leftが1のときだけoffsetを足す */
+        --get-one-offset(var(--left-sign), var(--offset)) 0,
+        /* 右上。rightが-1の時だけoffsetを引く */
+        calc(100% - --get-minusone-offset(var(--right-sign), var(--offset))) 0,
+        /* 右下。rightが1の時だけoffsetを引く */
+        calc(100% - --get-one-offset(var(--right-sign), var(--offset))) 100%,
+        /* 左下。leftが-1のときだけoffsetを足す */
+        --get-minusone-offset(var(--left-sign), var(--offset)) 100%
+    );
+}
+/* signが1のとき、offset、それ以外では0を返す */
+@function --get-one-offset( --sign: <number>, --offset: <length>) returns <length> {
+    result: calc(max(0, var(--sign)) * var(--offset));
+}
+/* signが-1のとき、offset、それ以外では0を返す */
+@function --get-minusone-offset( --sign: <number>, --offset: <length>) returns <length> {
+    result: calc(max(0, calc(var(--sign) * -1)) * var(--offset));
+}
+/* サンプル */
+/* ＼＼ */
+/* --skew-left-left: polygon(
+    0 0,
+    calc(100% - var(--offset)) 0,
+    100% 100%,
+    var(--offset) 100%
+); */
+
+/* ＼| */
+/* --skew-left-vert: polygon(
+    0 0,
+    100% 0,
+    100% 100%,
+    var(--offset) 100%
+); */
+
+/* ＼／ */
+/* --skew-left-right: polygon(
+    0 0,
+    100% 0,
+    calc(100% - var(--offset)) 100%,
+    var(--offset) 100%
+); */
+
+/* |／ */
+/* --skew-vert-right: polygon(
+    0 0,
+    100% 0,
+    calc(100% - var(--offset)) 100%,
+    0 100%
+); */
+
+/* |＼ */
+/* --skew-vert-left: polygon(
+    0 0,
+    calc(100% - var(--offset)) 0,
+    100% 100%,
+    0 100%
+); */
+
+/* ／＼ */
+/* --skew-right-left: polygon(
+    var(--offset) 0,
+    calc(100% - var(--offset)) 0,
+    100% 100%,
+    0 100%
+); */
+
+/* ／| */
+/* --skew-right-vert: polygon(
+    var(--offset) 0,
+    100% 0,
+    100% 100%,
+    0 100%
+); */
+
+/* ／／ */
+/* --skew-right-right: polygon(
+    var(--offset) 0,
+    100% 0,
+    calc(100% - var(--offset)) 100%,
+    0 100%
+); */
+/* #endregion */
+
+/* #region responsive */
+/* 4K monitor */
+@media (min-width: 2560px) {
+    :root {
+        --content-max-width: 1280px;
+    }
+}
+
+/* 2K monitor */
+@media (min-width: 1600px) {
+    :root {
+        --content-max-width: 1120px;
+    }
+}
+
+/* PC */
+@media (max-width: 1000px) {
+    :root {
+        --content-max-width: 960px;
+    }
+}
+
+/* Tablet */
+@media (max-width: 768px) {
+    :root {
+        --header-height: 50px;
+        --header-item-width: calc(var(--header-height) * 1.25);
+    }
+}
+
+/* Smartphone */
+@media (max-width: 600px) {
+    :root {
+        --header-height: 50px;
+        --header-item-width: calc(var(--header-height) * 1.25);
+    }
+}
+/* #endregion */

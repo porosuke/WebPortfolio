@@ -1,0 +1,174 @@
+.icon {
+    width: 100%;
+    height: 100%;
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+/* header */
+.icon.top {
+    background-image: url("../images/header/top.webp");
+}
+
+.icon.profile {
+    mask: url("../images/header/profile.svg") no-repeat center / contain;
+    background-color: var(--light-color);
+}
+
+.icon.skills {
+    mask: url("../images/header/skills.svg") no-repeat center / contain;
+    background-color: var(--light-color);
+}
+
+.icon.projects {
+    mask: url("../images/header/projects.svg") no-repeat center / contain;
+    background-color: var(--light-color);
+}
+
+.icon.journey {
+    mask: url("../images/header/journey.svg") no-repeat center / contain;
+    background-color: var(--light-color);
+}
+
+/* 今Light -> Darkアイコン */
+html[data-theme="light"] .icon.mode {
+    mask: url("../images/header/dark.svg") no-repeat center / contain;
+    background-color: var(--light-color);
+}
+
+/* 今Dark -> Lightアイコン */
+html[data-theme="dark"] .icon.mode {
+    mask: url("../images/header/light.svg") no-repeat center / contain;
+    background-color: var(--light-color);
+}
+
+/* Profile */
+.icon.mail {
+    mask: url("../images/profile/mail.svg") no-repeat center / contain;
+    background-color: var(--content-color);
+}
+
+.icon.github {
+    mask: url("../images/profile/github.svg") no-repeat center / contain;
+    background-color: var(--content-color);
+}
+
+.skill-honeycomb .icon.github {
+    background-image: url("../images/profile/github.svg");
+}
+
+.icon.zenn {
+    background-image: url("../images/profile/zenn.svg");
+}
+
+/* skills */
+.icon.c {
+    background-image: url("../images/skills/c.svg");
+}
+
+.icon.csharp {
+    background-image: url("../images/skills/csharp.svg");
+}
+
+.icon.cplusplus {
+    background-image: url("../images/skills/cplusplus.svg");
+}
+
+.icon.java {
+    background-image: url("../images/skills/java.svg");
+}
+
+.icon.python {
+    background-image: url("../images/skills/python.svg");
+}
+
+.icon.php {
+    background-image: url("../images/skills/php.svg");
+}
+
+.icon.html {
+    background-image: url("../images/skills/html.svg");
+}
+
+.icon.css {
+    background-image: url("../images/skills/css.svg");
+}
+
+.icon.javascript {
+    background-image: url("../images/skills/javascript.svg");
+}
+
+.icon.unrealengine {
+    background-image: url("../images/skills/unrealengine.svg");
+}
+
+.icon.unity {
+    background-image: url("../images/skills/unity.svg");
+}
+
+.icon.maya {
+    background-image: url("../images/skills/maya.svg");
+}
+
+.icon.blender {
+    background-image: url("../images/skills/blender.svg");
+}
+
+.icon.jwcad {
+    background-image: url("../images/skills/jwcad.webp");
+}
+
+.icon.mysql {
+    background-image: url("../images/skills/mysql.svg");
+}
+
+.icon.postgresql {
+    background-image: url("../images/skills/postgresql.svg");
+}
+
+.icon.arduino {
+    background-image: url("../images/skills/arduino.svg");
+}
+
+.icon.pic {
+    background-image: url("../images/skills/pic.svg");
+}
+
+.icon.raspberrypi {
+    background-image: url("../images/skills/raspberrypi.svg");
+}
+
+.icon.soldering {
+    mask: url("../images/skills/soldering.svg") no-repeat center / contain;
+    background-color: var(--dark-color);
+}
+
+.icon.git {
+    background-image: url("../images/skills/git.svg");
+}
+
+.icon.visualstudio {
+    background-image: url("../images/skills/visualstudio.svg");
+}
+
+.icon.vscode {
+    background-image: url("../images/skills/vscode.svg");
+}
+
+.icon.cloudflare {
+    background-image: url("../images/skills/cloudflare.svg");
+}
+
+.icon.linux {
+    background-image: url("../images/skills/linux.svg");
+}
+
+.icon.ubuntu {
+    background-image: url("../images/skills/ubuntu.svg");
+}
+
+.icon.close {
+    mask: url("../images/header/close.svg") no-repeat center / contain;
+    background-color: var(--content-color);
+}

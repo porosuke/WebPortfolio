@@ -1,0 +1,102 @@
+:root {
+    --badge-size: 50px;
+    --badge-gap: var(--space3);
+    --badge-num: 5;
+}
+
+.skill-level-intro {
+    background-color: var(--bg-color);
+    border: 2px double var(--main-color);
+    padding: var(--space3);
+}
+
+.badge-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, var(--badge-size));
+    gap: var(--badge-gap);
+    position: relative;
+}
+
+.skill-badge {
+    width: var(--badge-size);
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    z-index: 1;
+}
+
+/* バッジ単位で margin 付与 */
+.skill-badge.shift-all,
+.skill-badge.shift-after-line {
+    margin-left: calc(var(--badge-size)/2 + var(--badge-gap)/2);
+}
+
+.skill-name {
+    font-size: 10px;
+    text-align: center;
+}
+
+.skill-level {
+    text-align: center;
+}
+
+.skill-level.lv1 {
+    background-color: var(--blue-color);
+}
+
+.skill-level.lv2 {
+    background-color: var(--green-color);
+}
+
+.skill-level.lv3 {
+    background-color: var(--orange-color);
+}
+
+.skill-honeycomb-wrapper {
+    filter: drop-shadow(0px 0px 4px var(--dark75-color));
+    z-index: -1;
+}
+
+.skill-honeycomb {
+    width: 100%;
+    aspect-ratio: 1 / 1.1547;
+    object-fit: cover;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    background-color: var(--light-color);
+    
+    /* 6角形 */
+    clip-path: polygon(
+        50% 0%,
+        95% 25%,
+        95% 75%,
+        50% 100%,
+        5% 75%,
+        5% 25%
+    );
+}
+
+.skill-image {
+    width: 75%;
+    aspect-ratio: 1 / 1;
+}
+
+.skill-text {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    white-space: nowrap;
+    
+    z-index: 0;
+    font-family: "Cormorant";
+    font-style: italic;
+    font-weight: bold;
+    font-size: var(--space5);
+}
+
+.skill-border {
+    border: none;
+    border-top: 3px dashed var(--content-color);
+}

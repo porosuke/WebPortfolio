@@ -1,0 +1,43 @@
+.modal-description {
+    display: grid;
+    grid-template-rows: 1fr auto auto auto;
+    border: 2px solid var(--content-color);
+    border-radius: var(--space2);
+    padding: 0 var(--space3);
+}
+
+.desc-section {
+    padding: var(--space2) 0;
+    border-bottom: 2px solid var(--content-color);
+}
+
+.desc-section:last-child {
+    border-bottom: none;
+}
+
+.desc-text {
+    white-space: pre-wrap;
+    overflow-wrap: break-word;
+}
+
+.links-container {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space2);
+    word-break: break-all;
+}
+
+.tags-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space2);
+}
+
+.tag {
+    display: block;
+    background: var(--orange-color);
+    padding: var(--space1) var(--space2);
+    border-radius: var(--space3);
+    font-size: 0.9rem;
+    line-height: 1;
+}

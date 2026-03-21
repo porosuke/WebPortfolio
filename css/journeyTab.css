@@ -1,0 +1,143 @@
+.journey-tabs {
+    display: flex;
+    width: 100%;
+    position: sticky;
+    top: var(--header-height);
+    justify-content: center;
+    gap: var(--divider-width);
+    z-index: 100;
+}
+
+.journey-tab {
+    flex: 1;    /* 半分ずつ */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: var(--main75-color);
+    padding: var(--space2);
+    box-sizing: border-box;
+    /* ここで裏側をぼかす */
+    backdrop-filter: blur(2px);
+    -webkit-backdrop-filter: blur(2px);
+    --offset: calc(var(--tab-height) * tan(var(--angle)));
+}
+
+.journey-tab.production {
+    clip-path: --skew(var(--offset), -1, -1);
+}
+
+.journey-tab.event {
+    clip-path: --skew(var(--offset), 1, 1);
+}
+
+.journey-title {
+    margin-bottom: var(--space2);
+    font-weight: bold;
+    font-size: var(--space3);
+    color: var(--light-color);
+}
+
+.journey-tab.production .short {
+    display: none;
+}
+
+.journey-segmented-buttons {
+    display: flex;
+    border: 2px solid var(--dark-color);
+}
+
+.journey-segmented-buttons input[type="radio"] {
+    display: none;
+}
+
+.journey-segmented-buttons label {
+    color: var(--light-color);
+    padding: var(--space2) var(--space3);
+    cursor: pointer;
+    border-right: 2px solid var(--dark-color);
+
+    background-color: var(--main-color);
+    transition: background-color var(--fade-anim-time) ease;
+}
+
+/* 最後のラベルは右境界線なし */
+.journey-segmented-buttons label:last-child {
+    border-right: none;
+}
+
+.journey-segmented-buttons label:hover {
+    background-color: var(--main50-color);
+}
+
+.journey-segmented-buttons input[type="radio"]:checked + label {
+    background-color: var(--accent-color);
+}
+/* label中身アニメーション */
+.label-inner {
+    display: inline-block;
+    transition: transform var(--button-anim-time) ease;
+}
+
+label:hover .label-inner {
+    transform: scale(var(--button-expand-scale));
+}
+
+label:active .label-inner {
+    transform: scale(var(--button-shrink-scale));
+}
+
+@media (max-width: 768px) {
+    .journey-tab {
+        flex: 0 0 auto;
+        transition: flex var(--move-anim-time) ease;
+        background-color: var(--main50-color);
+    }
+
+    .journey-tab.active {
+        flex: 1 1 auto;
+        background-color: var(--main75-color);
+    }
+    
+    /* eventの向きに合わせる（ ｜　／ ） */
+    .journey-tab.production:not(.active) {
+        clip-path: --skew(var(--offset), 0, 1);
+    }
+    /* productionの向きに合わせる（ ＼　｜ ） */
+    .journey-tab.event:not(.active) {
+        clip-path: --skew(var(--offset), -1, 0);
+    }
+
+    /* タブタイトル */
+    .journey-title {
+        font-weight: normal;
+    }
+
+    .journey-tab.active .journey-title {
+        font-weight: bold;
+    }
+
+    .journey-tab.production:not(.active) .full {
+        display: none;
+    }
+
+    .journey-tab.production:not(.active) .short {
+        display: inline;
+    }
+
+    .journey-tab.production.active .short {
+        display: none;
+    }
+
+    /* タグ選択ボタン */
+    .journey-segmented-buttons {
+        display: none;
+    }
+
+    .journey-tab.active .journey-segmented-buttons {
+        display: flex;
+    }
+
+    .journey-segmented-buttons label {
+        padding: var(--space1) var(--space2);
+    }
+}

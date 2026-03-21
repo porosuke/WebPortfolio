@@ -1,0 +1,243 @@
+.journey-sections {
+    display: flex;
+    width: 100%;
+    justify-content: center;
+}
+
+.journey-section {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-top: var(--space2);
+    padding-bottom: var(--space2);
+    gap: var(--space2);
+    box-sizing: border-box;
+}
+
+.journey-section.production {
+    align-items: flex-start;
+}
+
+.journey-section.event {
+    align-items: flex-end;
+}
+
+.journey-leaf {
+    width: 99%;
+    height: var(--data-height);
+    background: linear-gradient(
+        to bottom,
+        color-mix(in srgb, var(--main-color) 90%, var(--light-color)) 0px,
+        var(--main-color) var(--data-height)
+    );
+    box-sizing: border-box;
+    position: relative;
+    z-index: 1;
+
+    --offset: calc(var(--data-height) * tan(var(--angle)));
+}
+
+.journey-section.production .journey-leaf {
+    clip-path: --skew(var(--offset), -1, -1);
+}
+
+.journey-section.event .journey-leaf {
+    clip-path: --skew(var(--offset), 1, 1);
+}
+
+.journey-leaf.dummy {
+    background: none;
+}
+
+.journey-leaf-title {
+    position: absolute;
+    top: var(--data-padding-vert);
+    left: var(--data-padding-hori);
+    font-size: var(--space4);
+    color: var(--light-color);
+}
+
+.tags-container.journey {
+    position: absolute;
+    bottom: var(--data-padding-vert);
+    right: var(--data-padding-hori);
+    flex-wrap: wrap-reverse;
+}
+
+/* production のときだけ反転 */
+.journey-section.production .journey-leaf-title {
+    text-align: right;
+    right: var(--data-padding-hori);
+}
+
+.journey-section.production .tags-container.journey {
+    left: var(--data-padding-hori);
+}
+
+.divider {
+    width: var(--divider-width);
+    position: relative;
+}
+
+.divider::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background-color: var(--content-color);
+    z-index: -1;
+
+    /* ∨ */
+    clip-path: polygon(
+        /* 左上 */
+        0% 0%,
+        /* 上中央 */
+        50% calc(var(--divider-width) / 2),
+        /* 右上 */
+        100% 0%,
+        /* 右下 */
+        100% calc(100% - (var(--divider-width) / 2)),
+        /* 下中央 */
+        50% 100%,
+        /* 左下 */
+        0% calc(100% - (var(--divider-width) / 2))
+    );
+}
+
+.divider-section {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: var(--space2);
+    gap: var(--space2);
+    box-sizing: border-box;
+}
+
+.date-node {
+    width: var(--date-node-width);
+    height: var(--data-height);
+    display: flex;
+    align-items: center;
+
+    --offset: calc(var(--data-height) * tan(var(--angle)));
+    clip-path: --skew(var(--offset), -1, 1);
+}
+
+.date-node.large {
+    width: calc(var(--date-node-width) * 2);
+}
+
+.date-node-text {
+    width: 100%;
+    height: calc(var(--data-height) / 2);
+    background-color: var(--accent-color);
+    text-align:center;
+    line-height: calc(var(--data-height) / 2);
+    padding: 2px;
+    font-size: 20px;
+    font-weight: bold;
+    z-index: 10;
+}
+
+.date-node.big .data-node-text {
+    padding: var(--space1);
+}
+
+@media (max-width: 768px) {
+    .journey-sections {
+        display: flex;
+        width: 100%;
+        overflow: hidden;
+    }
+
+    .journey-section {
+        flex: 0 0 0%;
+        overflow: hidden;
+        transition: flex var(--move-anim-time) ease;
+    }
+
+    .journey-section.active {
+        flex: 1 1 auto;
+    }
+
+    .divider-section {
+        padding: 0px;
+        padding-top: var(--space2);
+    }
+
+    .journey-sections:has(.journey-section.production.active) .divider-section {
+        align-items: flex-end;
+    }
+
+    .journey-sections:has(.journey-section.event.active) .divider-section {
+        align-items: flex-start;
+    }
+
+    .journey-sections:has(.journey-section.production.active) .divider::after {
+        /* ＼ */
+        clip-path: polygon(
+            /* 左上 */
+            0% 0%,
+            /* 右上 */
+            100% var(--divider-width),
+            /* 右下 */
+            100% 100%,
+            /* 左下 */
+            0% calc(100% - (var(--divider-width)))
+        );
+    }
+
+    .journey-sections:has(.journey-section.event.active) .divider::after {
+        /* ／ */
+        clip-path: polygon(
+            /* 左上 */
+            0% var(--divider-width),
+            /* 右上 */
+            100% 0%,
+            /* 右下 */
+            100% calc(100% - (var(--divider-width))),
+            /* 左下 */
+            0% 100%
+        );
+    }
+
+
+    .journey-leaf {
+        width: calc(100% - var(--date-node-width) / 3);
+    }
+
+    .journey-leaf-title {
+        font-size: var(--space3);
+    }
+
+    .journey-sections:has(.journey-section.production.active) .date-node {
+        clip-path: --skew(var(--offset), -1, 0);
+    }
+
+    .journey-sections:has(.journey-section.event.active) .date-node {
+        clip-path: --skew(var(--offset), 0, 1);
+    }
+
+    .date-node {
+        width: calc(var(--date-node-width) * 0.75);
+    }
+    
+    .date-node.large {
+        width: calc(var(--date-node-width) * 1.5);
+    }
+
+    .journey-sections:has(.journey-section.production.active) .date-node-text {
+        text-align: right;
+        padding-right: var(--space1);
+    }
+
+    .journey-sections:has(.journey-section.event.active) .date-node-text {
+        text-align: left;
+        padding-left: var(--space1);
+    }
+
+    .date-node-text {
+        font-size: var(--space3);
+    }
+}

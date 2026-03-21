@@ -1,0 +1,113 @@
+:root {
+    --image-size: 200px;
+    --contact-height: 70px;
+}
+
+.profile-content {
+    display: grid;
+    grid-template-columns: var(--image-size) 1fr;
+    grid-template-rows: var(--image-size) 1fr auto;
+    grid-template-areas: 
+        "imageArea nameunivArea"
+        "introArea introArea"
+        "contactArea contactArea";
+    gap: var(--space3);
+}
+
+.profile-image {
+    grid-area: imageArea;
+    width: var(--image-size);
+    aspect-ratio: 1 / 1;
+
+    --bottom-cut: 5%;
+    --side-cut: calc(var(--bottom-cut) / tan(var(--angle)));
+    clip-path: polygon(
+        0 0,
+        100% 0,
+        100% calc(100% - var(--side-cut)),
+        calc(100% - var(--bottom-cut)) 100%,
+        0 100%
+    );
+}
+
+.profile-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+.profile-name {
+    grid-area: nameunivArea;
+    align-self: flex-start;
+    font-size: var(--space6);
+    font-family: "Black Ops One";
+    font-weight: bold;
+}
+
+.profile-univ {
+    grid-area: nameunivArea;
+    align-self: flex-end;
+    font-size: var(--space3);
+}
+
+.profile-intro {
+    grid-area: introArea;
+    font-size: var(--space3);
+}
+
+.profile-contacts {
+    grid-area: contactArea;
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space3);
+}
+
+.profile-contact {
+    height: var(--contact-height);
+    display: flex;
+    align-items: center;
+    gap: var(--space2);
+}
+
+.profile-contact-button {
+    height: 60%;
+    aspect-ratio: 1 / 1;
+    flex-shrink: 0;
+
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+}
+
+.profile-contact-content {
+    font-size: var(--space4);
+}
+/* コピーボタンのアクション */
+.copy-button {
+    height: 50%;
+    aspect-ratio: 1 / 1;
+    color: var(--content-color);
+
+    font-size: var(--space4);
+    line-height: 1;
+}
+
+/* responsive */
+/* Smartphone */
+@media (max-width: 600px) {
+    :root {
+        --image-size: 100px;
+        --contact-height: 35px;
+    }
+    .profile-name {
+        font-size: var(--space5);
+    }
+    .profile-contact-content {
+        font-size: var(--space3);
+    }
+    .copy-button {
+        height: 100%;
+    }
+}

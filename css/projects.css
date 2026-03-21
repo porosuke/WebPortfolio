@@ -1,0 +1,23 @@
+:root {
+    --button-gap: var(--space3);
+}
+
+#project-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--button-gap);
+}
+
+.project-item {
+    width: calc((var(--content-max-width) - (var(--button-gap) * 2)) / 3);
+    text-align: center;
+}
+
+.item-button {
+    width: 100%;
+    aspect-ratio: 16 / 10;
+}
+
+.item-title {
+    margin: var(--space2);
+}

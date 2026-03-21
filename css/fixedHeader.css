@@ -1,0 +1,133 @@
+.fixed-header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1000;
+    background: linear-gradient(
+        to bottom,
+        color-mix(in srgb, var(--main-color) 90%, var(--light-color)) 0%,
+        var(--main-color) 100%
+    );
+    --offset: calc(var(--header-height) * tan(var(--angle)));
+}
+
+.inner-header {
+    max-width: var(--content-max-width);
+    padding-left: var(--content-side-padding);
+    padding-right: var(--content-side-padding);
+    margin: 0 auto;
+    height: var(--header-height);
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.fixed-header-left,
+.fixed-header-right {
+    height: 100%;
+    display: flex;
+}
+
+.nav-item {
+    width: var(--header-item-width);
+    height: 100%;
+
+    display: flex;
+    justify-content: center;
+
+    text-decoration: none;
+    color: inherit;
+    cursor: pointer;
+
+    position: relative;
+
+    /* 右へ傾ける */
+    clip-path: --skew(var(--offset), 1, 1);
+}
+/* clipの隙間を詰める */
+.nav-item + .nav-item {
+    margin-left: calc(-1 * var(--offset));
+}
+
+.item-content .icon {
+    margin: var(--space1);
+}
+
+.item-content .label {
+    color: var(--light-color);
+}
+
+.item-content {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    transition: transform var(--button-anim-time) ease;
+}
+
+.nav-item:active .item-content {
+    transform: scale(var(--button-shrink-scale));
+}
+
+/* ボタンの間の線 */
+.nav-item::before {
+    content: "";
+    position: absolute;
+    right: 0;
+    top: 0;
+    width: 1px;
+    height: 200%;
+    background: var(--light-color);
+    transform: rotate(var(--angle));
+    transform-origin: top right;
+}
+/* 最初の要素だけ左線 */
+.fixed-header-left .nav-item::after,
+.fixed-header-right .nav-item:first-of-type::after { 
+    content: "";
+    position: absolute;
+    left: var(--offset);
+    top: 0;
+    width: 1px;
+    height: 200%;
+    background: var(--light-color);
+    transform: rotate(var(--angle));
+    transform-origin: top left;
+}
+
+.hover-bg {
+    content: "";
+    position: absolute;
+    inset: 0;
+    
+    background: var(--accent-color);
+
+    transform: translateX(-100%);
+    transition: transform var(--fade-anim-time) ease;
+
+    clip-path: --skew(var(--offset), 1, 1);
+
+    z-index: -1;
+}
+
+.nav-item:hover .hover-bg {
+    transform: translateX(0);
+}
+
+
+/* Tablet */
+@media (max-width: 768px) {
+    .nav-item {
+        /* 文字を消す */
+        font-size: 0;
+    }
+
+    .item-content .icon {
+        margin: var(--space2);
+    }
+}
