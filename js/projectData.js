@@ -173,10 +173,7 @@ export const projectData = {
         ].join("\n"),
         link: [
             "https://github.com/porosuke/NoteEditorForSlideCore",
-            "https://youtu.be/B1ZAtA6fYjM",
-            "https://youtu.be/s0J7_qJrRJU",
-            "https://youtu.be/3pw9psCvnP8",
-            "https://youtu.be/CWYa62CPAlQ",
+            "https://youtu.be/EzZ0e7bept0?si=o6nod9oJYnuEGjSS",
         ],
         compYear: 2025,
         compMonth: 12,
